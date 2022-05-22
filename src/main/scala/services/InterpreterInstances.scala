@@ -4,7 +4,7 @@ import services.interpreters._
 import cats.data.EitherT
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.Future
 
 object Types {
   type FutEither[A] = EitherT[Future, Throwable, A]

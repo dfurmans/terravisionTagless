@@ -1,7 +1,6 @@
 package services.interpreters
 
 import cats.Monad
-import cats.implicits._
 import models.external.HttpResponse
 import services.HttpClientT
 
