@@ -16,15 +16,15 @@ object RenderTerravisonProgram {
                                                  (
                                                    implicit A: Applicative[M],
                                                    ME: MonadError[M, Throwable]
-                                                 ) : M[LocationData] ={
+                                                 ) : M[LocationData] = {
     val maybeAData = for {
       aTerra <- terravisionLocationInterpreter.retrieveDataForId(locationId.id)
     } yield aTerra
 
     ME.recoverWith(maybeAData) {
-      case error => {}
+      case error =>
         s"error $error" // this should be LOGGER issue
-        A.pure(LocationData(LocationId(""))) // return a Monoid
+        A.pure(LocationData(LocationId(""))) // return a Monoid in case of error
     }
   }
 

@@ -11,7 +11,7 @@ class TerravisionLocationInterpreter[M[_] : Monad](
                                                   ) extends LocationDataT[M]{
   override def retrieveDataForId(id: String): M[LocationData] = {
     val dataReturn: M[LocationData] = for {
-      a <- httpClient.get("")
+      a <- httpClient.get(id)
     } yield LocationData(LocationId(a.body))
     dataReturn
   }
