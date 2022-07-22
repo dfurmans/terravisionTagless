@@ -17,8 +17,8 @@ object RenderTerravisonProgram {
                                                    implicit A: Applicative[M],
                                                    ME: MonadError[M, Throwable]
                                                  ) : M[LocationData] = {
-    val maybeAData = for {
-      aTerra <- terravisionLocationInterpreter.retrieveDataForId(locationId.id)
+    val maybeAData: M[LocationData] = for {
+      aTerra: LocationData <- terravisionLocationInterpreter.retrieveDataForId(locationId.id)
     } yield aTerra
 
     ME.recoverWith(maybeAData) {
